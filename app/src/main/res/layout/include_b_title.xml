@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/title_height"
+    android:background="@android:color/white"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/include_title_ib_left"
+        android:layout_width="@dimen/title_button_size"
+        android:onClick="onClick"
+        android:layout_height="@dimen/title_button_size"
+        android:background="@drawable/selected_ic_back"
+        android:src="@mipmap/b_icon_back" />
+
+
+    <com.daqi.baseproject.view.V_AlwaysMarqueeTextView
+        android:id="@+id/include_title_tv"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/main"
+        android:textSize="@dimen/title_size" />
+
+
+
+    <ImageButton
+        android:id="@+id/include_title_ib_right"
+        android:layout_width="@dimen/title_button_size"
+        android:onClick="onClick"
+        android:layout_height="@dimen/title_button_size"
+        android:padding="10dp"
+        android:background="@drawable/selected_ic_back"
+        android:src="@mipmap/list_map"
+        android:scaleType="fitXY"
+        android:visibility="invisible"/>
+
+
+
+</LinearLayout>

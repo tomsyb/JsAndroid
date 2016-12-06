@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta name="viewport"	content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/initApp.js"></script>
+<script type="text/javascript" src="js/pageutils.js"></script>
+<!-- 以上为每个页面必须的内容 -->
+
+</head>
+<body >
+	<div id="pagevalue">
+	     
+	</div>
+</body>
+	<!-- 以下为JS内容 -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var htmls = getDeviceData('data1');
+			$('#pagevalue').html(htmls);
+			window.alert(htmls);
+			//lookpics();
+		});
+		//此方法为重新加载内容的方法，直接复制使用
+		function dosuccess(key,result){
+			if(key=='111'){
+				if(isnotnull(result)){
+					var obj=$.parseJSON(result);
+					$('#pagevalue').html(obj.content);
+					isaddlookpic(result);
+				}
+			}
+		}
+	</script>
+</html>
+               						
+
+				

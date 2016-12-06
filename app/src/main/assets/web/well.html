@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>欢迎页</title>
+    <link rel="stylesheet" type="text/css" href="css/cs_well.css">
+    <style>
+        body,html{ width:100%; height:100%; background-color:#0aa44e; text-align:center;}
+    </style>
+</head>
+<body>
+<div style="padding:0 10px; height:400px; position:relative; top:20%; overflow:hidden;">
+    <img src="file:///android_asset/tlogo.png" class="wLogo"/>
+    <p class="wPtex"><span id="titles"></span></p>
+    <div class="wsPt">
+        <p class="wsLine wl01 fl"></p>
+        <p class="wsTex fl"><span class="ws01">看得见</span> <span class="ws02">联得上</span> <span class="ws03">呼得应</span> <span class="ws04">调得动</span></p>
+        <p class="wsLine wl02 fr"></p>
+    </div>
+</div>
+</body>
+<script src="file:///android_asset/main.js"></script>
+<script type="text/javascript">
+        document.getElementById("titles").innerHTML = COMMON.projectTitle;
+</script>
+</html>

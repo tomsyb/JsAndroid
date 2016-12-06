@@ -1,0 +1,263 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title>环保</title>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+    <meta name="applicable-device" content="mobile"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" type="text/css" href="css/cs.css?v=<%=SystemBase.showRandom() %>">
+    <link rel="stylesheet" type="text/css" href="css/animate.css?v=<%=SystemBase.showRandom() %>">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/DateUtil.js"></script>
+</head>
+<body style=" background-color: #fcfcfc;">
+<!--实时人数-->
+<!--标题区域开始-->
+<div class="clearfix mb10">
+    <hr class="bor_1" style="margin-top: 0;">
+    <div class="titDiv fl clearfix">
+        <p class="sf fl">
+        </p>
+
+        <h2 class="fl font14 color059445" id="protect">
+           </h2>
+        <!-- 天数切换区域开始-->
+        <div class="mr10 fr"  style="display:none">
+            <a>
+                <img src="images/jt-L2.png" class="jt jt-L"></a>
+
+            <p class="hbsj-time font13 color555">
+                <span class="t-year" id="data"></span><a>
+                <img src="images/jt-R2.png" class="jt jt-R"></a>
+            </p>
+        </div>
+        <!--天数切换区域结束-->
+    </div>
+    <hr class="bor_1" style="margin-top: -1px;">
+</div>
+<div class="protect_nodata" style="display:none" id="show_nodata">
+    <img src="file:///android_asset/tlogo.png"/>
+
+    <p style="font-size:1.6rem;margin-top:1rem;" id="nodata_text">未获取到当天的环保数据</p>
+</div>
+<!--标题区域结束-->
+<!--环保数据 地点 开始-->
+<div id="style1" style="display:none">
+    <div class="hbsj-box clearfix">
+        <div id="bar_chart">
+            <!--柱状图开始-->
+        </div>
+        <!--柱状图结束-->
+        <!-- nav开始-->
+        <div class="hbsj-nav clearfix" id="chart_addr">
+        </div>
+        <!--nav结束-->
+        <i class="smIC"></i>
+    </div>
+    <p class="hbsj-address clearfix">
+        <span class="font21 color333 fl mr10" id="cityName"></span><span
+            class="fl hbsj-level font14"
+            id="weather_state"></span><span
+            class="fr"><span class="font14 color666">AQI:<span
+            class="colorff9a22 mr10" id="aqiNum"></span> 污染等级:<span class="colorff9a22"
+                                                                    id="pollute_level"></span>
+            </span>
+                <br>
+                <span class="font12 color999 mt5 di" id="monitor_time">监测</span> </span>
+    </p>
+    <!--环保数据地点结束-->
+    <div class="hbsj-cont clearfix">
+        <div class="hbsj-item fl clearfix">
+            <p class="fl wd65">
+                <span class="font16 color333">PM2.5</span><br>
+                <span class="font14 color999">入肺颗粒物</span>
+            </p>
+            <span class="fr dot2 di font14" id="pm25_num"></span>
+        </div>
+        <div class="hbsj-item fr clearfix">
+            <p class="fl wd65">
+                <span class="font16 color333">PM10</span><br>
+                <span class="font14 color999">可吸入颗粒物</span>
+            </p>
+            <span class="fr dot2 di font14" id="pm10_num"></span>
+        </div>
+        <div class="hbsj-item fl clearfix">
+            <p class="fl wd65">
+                <span class="font16 color333">NO<sub class="font11">2</sub></span><br>
+                <span class="font14 color999">二氧化氮</span>
+            </p>
+            <span class="fr dot2 di font14" id="NO2_num"></span>
+        </div>
+        <div class="hbsj-item fr clearfix">
+            <p class="fl wd65">
+                <span class="font16 color333">SO<sub class="font11">2</sub></span><br>
+                <span class="font14 color999">二氧化硫</span>
+            </p>
+            <span class="fr dot2 di font14" id="SO2_num"></span>
+        </div>
+        <div class="hbsj-item fl clearfix">
+            <p class="fl wd65">
+                <span class="font16 color333">CO</span><br>
+                <span class="font14 color999">一氧化碳</span>
+            </p>
+            <span class="fr dot2 di font14" id="CO_num"></span>
+        </div>
+        <div class="hbsj-item fr clearfix">
+            <p class="fl wd65">
+                <span class="font16 color333">0<sub class="font11">3</sub></span><br>
+                <span class="font14 color999">臭氧</span>
+            </p>
+            <span class="fr dot2 di font14" id="O3_num"></span>
+        </div>
+        <p class="font14 color999 fl">
+            单位：mg/m³
+        </p>
+    </div>
+</div>
+<!--环保数据 地点 开始-->
+<ul class="hbsj_lst2 clearfix" style="display:display;" id="style2">
+</ul>
+<!--弹框 start-->
+<div class="hbsj_ceng none"></div>
+<div class="hbsj_pop none">
+    <div class="hbsj-address2 clearfix">
+        <p class="new_city">
+            <span class="font21 color333 fl mr10" id="pop_city"></span>
+            <span class="fl hbsj-level2 font14" id="pop_aqi_info"></span>
+            <span class="font14 color666 fr">AQI:<span class="colorff9a22 mr10"
+                                                       id="pop_aqi_num"></span><span
+                    class="colorff9a22" id="pop_aqi_level"></span> </span>
+        </p>
+
+        <p style="text-align: right;"><span
+                > &nbsp;&nbsp;<label
+                class="font14 color999">单位：mg/m³ </label></span>
+        </p>
+    </div>
+    <div class="hbsj-cont2 clearfix">
+        <div class="hbsj-item2 fl clearfix">
+            <p class="fl wd65">
+                <span class="font16 color333">PM2.5</span><br>
+                <span class="font14 color999">入肺颗粒物</span>
+            </p>
+            <span class="fr dot2 di font14" id="pop_pm25"></span>
+        </div>
+        <div class="hbsj-item2 fr clearfix">
+            <p class="fl wd65">
+                <span class="font16 color333">PM10</span><br>
+                <span class="font14 color999">可吸入颗粒物</span>
+            </p>
+            <span class="fr dot2 di font14" id="pop_pm10"></span>
+        </div>
+
+        <div class="hbsj-item2 fl clearfix">
+            <p class="fl wd65">
+                <span class="font16 color333">NO<sub class="font11">2</sub></span><br>
+                <span class="font14 color999">二氧化氮</span>
+            </p>
+            <span class="fr dot2 di font14" id="pop_no2"><span>
+        </div>
+
+
+        <div class="hbsj-item2 fr clearfix">
+            <p class="fl wd65">
+                <span class="font16 color333">SO<sub class="font11">2</sub></span><br>
+                <span class="font14 color999">二氧化硫</span>
+            </p>
+            <span class="fr dot2 di font14" id="pop_so2"></span>
+        </div>
+
+        <div class="hbsj-item2 fl clearfix">
+            <p class="fl wd65">
+                <span class="font16 color333">CO</span><br>
+                <span class="font14 color999">一氧化碳</span>
+            </p>
+            <span class="fr dot2 di font14" id="pop_co"></span>
+        </div>
+
+        <div class="hbsj-item2 fr clearfix">
+            <p class="fl wd65">
+                <span class="font16 color333">0<sub class="font11">3</sub></span><br>
+                <span class="font14 color999">臭氧</span>
+            </p>
+            <span class="fr dot2 di font14" id="pop_o3"></span>
+        </div>
+    </div>
+
+</div>
+<!--弹框 end-->
+<script src="file:///android_asset/main.js"></script>
+<script src="js/highcharts/highcharts.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/public.js"></script>
+<script type="text/javascript" src="js/protectInfo.js"></script>
+<script type="text/javascript">
+        $("#protect").html(COMMON.protect);
+        var time = "";
+        $(function () {
+            var todayDt = new Date();
+            $("#data").html(DateUtil.dateToStr('yyyy-MM-dd', todayDt));
+            time = $("#data").html();
+
+            todayDt = DateUtil.strFormatToDate('yyyy-MM-dd', time);
+            var minData = DateUtil.dateAdd('d', -7, todayDt);
+            var maxData = DateUtil.dateAdd('d', 0, todayDt);
+
+            //点击左边箭头
+            $(".jt-L").click(function () {
+                var currDt = DateUtil.strFormatToDate('yyyy-MM-dd', $("#data").html());
+                if (currDt > minData) {
+                    $("#data").html(DateUtil.dateToStr('yyyy-MM-dd', DateUtil.dateAdd('d', -1, currDt)));
+                    $(this).attr("src", "images/jt-L2.png");
+                    time = $("#data").html();
+
+                    <!--getAndShowData();-->
+                    htmlData.getProtectInfo(time);
+
+                    $(".jt-R").attr("src", "images/jt-R.png");
+                    var preDt = DateUtil.dateAdd('d', -1, currDt);
+                    if (DateUtil.dateDiff('d', preDt, minData) == 0)
+                        $(this).attr("src", "images/jt-L.png"); //置向左不可点击
+                } else {
+                    $(this).attr("src", "images/jt-L.png"); //置向左不可点击
+                    $(".jt-R").attr("src", "images/jt-R.png");
+                }
+            })
+
+            //点击右边箭头
+            $(".jt-R").click(function () {
+                var currDt = DateUtil.strFormatToDate('yyyy-MM-dd', $("#data").html());
+
+                if (currDt < maxData) {
+                    $("#data").html(DateUtil.dateToStr('yyyy-MM-dd', DateUtil.dateAdd('d', 1, currDt)));
+                    $(this).attr("src", "images/jt-R.png");
+                    time = $("#data").html();
+
+                    <!--getAndShowData();-->
+                    htmlData.getProtectInfo(time);
+
+                    $(".jt-L").attr("src", "images/jt-L2.png");
+                    var nextDt = DateUtil.dateAdd('d', 1, currDt);
+                    if (DateUtil.dateDiff('d', nextDt, maxData) == 0)
+                        $(this).attr("src", "images/jt-R2.png"); //置向右不可点击
+                } else {
+                    $(this).attr("src", "images/jt-R2.png"); //置向右不可点击
+                    $(".jt-L").attr("src", "images/jt-L2.png");
+                }
+            })
+        })
+        $(".hbsj_ceng").on("click",function(){
+            $(".hbsj_ceng,.hbsj_pop").fadeOut(100);
+        });
+
+        $(document).ready(function () {
+            time = DateUtil.dateToStr('yyyy-MM-dd', new Date());
+            htmlData.getProtectInfo(time);
+        });
+
+</script>
+</body>
+</html>

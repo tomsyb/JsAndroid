@@ -1,0 +1,17 @@
+/* CSS Document */
+/*全局样式开始*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, dd, dl, dt, li, ol, ul,input,select,button,textarea { padding:0px; margin:0px;}
+input,button,select,textarea{outline:none;}/*去掉chrome下聚焦时的黄色边框*/
+html, body{height:100%;}
+img { max-width: 100%; height: auto;}
+input{ font-family:"SimSun";}
+body {font-size:12px; font-family:"Arial", "SimSun";}
+a img {	border:none;}
+a {	text-decoration:none; padding:0px; margin:0; cursor:pointer; cursor:hand;}
+ul, ul li, ol li, li {	list-style:none;}
+botton {padding:0px; margin:0px; font-size:12px; cursor:pointer;}
+.fl {	float:left;}
+.fr {	float:right;}
+a:focus, button:focus {	outline:none;	-moz-outline:none;}
+.none{	display:none;}
+/*---------------主框架样式区---------------------*/

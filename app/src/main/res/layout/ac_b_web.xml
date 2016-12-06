@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include layout="@layout/include_b_webtitle"/>
+    <!--错误的布局-->
+    <LinearLayout
+        android:id="@+id/ll_web_activity_anim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_frame_web_activity"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_microphone"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/ib_load_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:src="@mipmap/ic_launcher"
+            android:visibility="visible" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数据加载失败，点击重试！" />
+    </LinearLayout>
+    <!--显示网页的布局-->
+    <FrameLayout
+        android:id="@+id/fl_web_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+
+        <com.daqi.baseproject.view.V_ProgressWebView
+            android:id="@+id/wv_web_activity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:scrollbarSize="0dp"
+            android:scrollbarThumbVertical="@color/main" />
+
+
+        <ImageButton
+            android:id="@+id/ib_web_activity_totop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="15dp"
+            android:background="@null"
+            android:visibility="gone" />
+    </FrameLayout>
+</LinearLayout>

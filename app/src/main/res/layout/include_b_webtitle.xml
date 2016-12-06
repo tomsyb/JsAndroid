@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/web_rl_ui_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@android:color/white"
+        android:clickable="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:gravity="center"
+            android:visibility="visible">
+
+            <com.daqi.baseproject.view.V_AlwaysMarqueeTextView
+                android:id="@+id/web_tv_ui_title_text"
+                style="@style/titleTextView" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/web_btn_ui_title_menu_text"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/selected_ic_back"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+
+        <Button
+            android:id="@+id/web_btn_ui_title_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/selected_ic_back"
+            android:drawableLeft="@mipmap/b_icon_back"
+            android:padding="10dp"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <include layout="@layout/include_line_one" />
+
+    <Button
+        android:id="@+id/web_btn_ui_network_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selected_ic_back"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:padding="10dp"
+        android:text="@string/error_net_go_setting"
+        android:textColor="@drawable/selected_tc_gray"
+        android:visibility="gone" />
+
+</LinearLayout>
